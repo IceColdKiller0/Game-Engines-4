@@ -1,10 +1,13 @@
-// #include "Engine/Core/MainEngine.h"
-#include "MainEngine.h"
+#include "Engine/Core/MainEngine.h"
+#include "Game/Game_1.h"
+//#include "MainEngine.h"
 
 //MainEngine* engine;
 
 int main(int argc, char* argv[])
 {
+	MainEngine::GetInstance()->SetGameInterface(new Game_1); //sets game interface
+
 	if (!MainEngine::GetInstance()->OnCreate("C++ Game Engine", 800, 600))
 	{
 		std::cout << "Engine failed to initialize" << std::endl;
