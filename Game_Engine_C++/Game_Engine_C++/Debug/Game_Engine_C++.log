@@ -1,7 +1,2 @@
-﻿  MainEngine.cpp
-  Game_1.cpp
-  GameScene.cpp
-  StartScene.cpp
-  Main.cpp
-  Generating Code...
+﻿  GameScene.cpp
   Game_Engine_C++.vcxproj -> C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Debug\Game_Engine_C++.exe

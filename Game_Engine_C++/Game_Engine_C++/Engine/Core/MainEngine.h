@@ -9,6 +9,8 @@
 #include "Scene.h"
 #include <string>
 
+#include "../Rendering/3D/GameObject.h"
+
 class MainEngine
 {
 public:
@@ -25,7 +27,7 @@ public:
 	bool OnCreate(std::string name_, int width_, int height_);
 	void Run();
 	void Exit();
-
+	
 	bool GetIsRunning() const;
 	int GetCurrentScene() const;
 
