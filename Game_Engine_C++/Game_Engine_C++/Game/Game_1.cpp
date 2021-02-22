@@ -48,12 +48,11 @@ void Game_1::BuildScene()
 
     switch (MainEngine::GetInstance()->GetCurrentScene())
     {
-    default: //case 0:
-        currentScene = new StartScene();
-        break;
-
     case 1:
         currentScene = new GameScene();
+        break;
+    default: //case 0:
+        currentScene = new StartScene();
         break;
     }
 

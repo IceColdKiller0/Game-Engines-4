@@ -2,7 +2,7 @@
 
 GameObject::GameObject(Model* model_)
 {
-	//model = nullptr;
+	model = nullptr;
 	model = model_;
 }
 

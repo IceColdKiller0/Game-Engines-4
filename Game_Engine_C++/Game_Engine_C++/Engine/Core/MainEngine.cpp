@@ -42,6 +42,9 @@ bool MainEngine::OnCreate(std::string name_, int width_, int height_)
 		return isRunning = false; // sets the isRunning variable to false then return the variable
 	}
 
+	ShaderHandler::GetInstance()->CreateProgram("colourShader",
+		"Engine/Shaders/ColourVertexShader.glsl", "Engine/Shaders/ColourFragmentShader.glsl");
+
 	if (gameInterface)
 	{
 		if (!gameInterface->OnCreate())
@@ -123,6 +126,8 @@ void MainEngine::Render()
 
 void MainEngine::OnDestroy()
 {
+	ShaderHandler::GetInstance()->OnDestroy();
+
 	delete gameInterface;
 	gameInterface = nullptr;
 
