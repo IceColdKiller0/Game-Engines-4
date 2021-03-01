@@ -13,6 +13,8 @@
 
 #include "../Graphics//ShaderHandler.h"
 
+#include "../Camera/Camera.h"
+
 class MainEngine
 {
 public:
@@ -32,9 +34,13 @@ public:
 	
 	bool GetIsRunning() const;
 	int GetCurrentScene() const;
+	float GetScreenWidth() const;
+	float GetScreenHeight() const;
+	Camera* GetCamera() const;
 
 	void SetGameInterface(GameInterface* gameInterface_); 
 	void SetCurrentScene(int sceneNum_);
+	void SetCamera(Camera* camera_);
 
 private:
 
@@ -57,6 +63,8 @@ private:
 	GameInterface* gameInterface;
 
 	int currentSceneNum;
+
+	Camera* camera;
 };
 
 #endif

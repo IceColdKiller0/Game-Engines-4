@@ -11,6 +11,7 @@ MainEngine::MainEngine()
 	isRunning = false;
 	fps = 60;
 	gameInterface = nullptr;
+	camera = nullptr;
 	currentSceneNum = 0;
 }
 
@@ -91,6 +92,21 @@ int MainEngine::GetCurrentScene() const
 	return currentSceneNum;
 }
 
+float MainEngine::GetScreenWidth() const
+{
+	return static_cast<float>(window->GetWidth());
+}
+
+float MainEngine::GetScreenHeight() const
+{
+	return static_cast<float>(window->GetHeight());
+}
+
+Camera* MainEngine::GetCamera() const
+{
+	return camera;
+}
+
 void MainEngine::SetGameInterface(GameInterface* gameInterface_)
 {
 	gameInterface = gameInterface_;
@@ -99,6 +115,11 @@ void MainEngine::SetGameInterface(GameInterface* gameInterface_)
 void MainEngine::SetCurrentScene(int sceneNum_)
 {
 	currentSceneNum = sceneNum_;
+}
+
+void MainEngine::SetCamera(Camera* camera_)
+{
+	camera = camera_;
 }
 
 void MainEngine::Update(const float deltaTime_)
@@ -130,6 +151,9 @@ void MainEngine::OnDestroy()
 
 	delete gameInterface;
 	gameInterface = nullptr;
+
+	delete camera;
+	camera = nullptr;
 
 	delete window; // cleaning up pointer - whenever cleaning up pointer delete window first then set to nullptr
 	window = nullptr;
