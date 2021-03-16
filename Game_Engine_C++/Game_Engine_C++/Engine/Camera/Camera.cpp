@@ -41,6 +41,16 @@ void Camera::SetRotation(float yaw_, float pitch_)
     UpdateCameraVectors();
 }
 
+void Camera::AddLightSource(LightSource* lightSource_)
+{
+    lightSource.push_back(lightSource_);
+}
+
+std::vector<LightSource*> Camera::GetLightSource()
+{
+    return lightSource;
+}
+
 glm::mat4 Camera::GetView() const
 {
     return view;

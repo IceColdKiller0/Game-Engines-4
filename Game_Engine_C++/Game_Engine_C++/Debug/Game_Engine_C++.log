@@ -1,2 +1,12 @@
-﻿  GameScene.cpp
+﻿  Camera.cpp
+  GameObject.cpp
+  GameScene.cpp
+  Game_1.cpp
+  LightSource.cpp
+  Main.cpp
+  MainEngine.cpp
+  StartScene.cpp
+  Mesh.cpp
+  Model.cpp
+  Generating Code...
   Game_Engine_C++.vcxproj -> C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Debug\Game_Engine_C++.exe

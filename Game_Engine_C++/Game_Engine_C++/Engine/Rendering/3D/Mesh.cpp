@@ -1,12 +1,14 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex>& vertexList_, GLuint shaderProgram_)
+Mesh::Mesh(std::vector<Vertex>& vertexList_, GLuint textureID_, GLuint shaderProgram_)
 {
 	VAO = 0;
 	VBO = 0;
 	vertexList = std::vector<Vertex>(); //sets vertex list to equal an empty vector
+	textureID = 0;
 	shaderProgram = 0;
 	vertexList = vertexList_; //sets the class vertex list vector equal to the vertex list passed in as a param 
+	textureID = textureID_;
 	shaderProgram = shaderProgram_;
 	GenerateBuffers();
 }
@@ -21,13 +23,25 @@ Mesh::~Mesh()
 
 void Mesh::Render(Camera* camera_, glm::mat4 transform_)
 {
+	glUniform1i(textureLoc, 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+
+	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
+	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetPerspective()));
+
+	glUniformMatrix3fv(viewPos, 1, GL_FALSE, glm::value_ptr(camera_->GetPosition()));
+	//glUniform3fv(lightPos, 1, );
+	//glUniform1f(ambValue, );
+	
+
+	
+
 	glBindVertexArray(VAO); //BIND VAO
 
 	glEnable(GL_DEPTH_TEST); // when objects are rendered their z values will be taken into consideration
 
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(transform_));
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetPerspective()));
 
 	glDrawArrays(GL_TRIANGLES, 0, vertexList.size()); //draw
 
@@ -64,4 +78,12 @@ void Mesh::GenerateBuffers()
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
 	viewLoc = glGetUniformLocation(shaderProgram, "view");
 	projectionLoc = glGetUniformLocation(shaderProgram, "projection");
+	textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
+
+	viewPos = glGetUniformLocation(shaderProgram, "viewPos");
+	lightPos = glGetUniformLocation(shaderProgram, "light.lightPos");
+	ambValue = glGetUniformLocation(shaderProgram, "light.ambValue");
+	diffValue = glGetUniformLocation(shaderProgram, "light.diffValue");
+	specValue = glGetUniformLocation(shaderProgram, "light.specValue");
+	lightColour = glGetUniformLocation(shaderProgram, "light.lightColour");
 }

@@ -15,6 +15,7 @@ public:
 	void Render(Camera* camera_);
 	void AddMesh(Mesh* mesh_);
 
+
 	glm::vec3 GetPosition() const; //gets position
 	float GetAngle() const; //gets angle
 	glm::vec3 GetRotation() const; //gets rotation

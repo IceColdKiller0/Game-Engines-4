@@ -19,7 +19,7 @@ struct Vertex //non-interleaved
 class Mesh
 {
 public:
-	Mesh(std::vector<Vertex>& vertexList_, GLuint shaderProgram_); // takes in a vector of type vertex objects // pass in the vector by reference (&) than the value, saves computation time
+	Mesh(std::vector<Vertex>& vertexList_, GLuint textureID_, GLuint shaderProgram_); // takes in a vector of type vertex objects // pass in the vector by reference (&) than the value, saves computation time
 	~Mesh();
 
 	void Render(Camera* camera_, glm::mat4 transform_);
@@ -29,7 +29,10 @@ private:
 	GLuint VAO, VBO; 
 	std::vector<Vertex> vertexList;
 	GLuint shaderProgram;
-	GLuint modelLoc, viewLoc, projectionLoc; //uniform location variable
+	GLuint textureID;
+	GLuint viewPos, lightPos;
+	GLuint ambValue, diffValue, specValue, lightColour;
+	GLuint modelLoc, viewLoc, projectionLoc, textureLoc; //uniform location variable
 
 	//Vertex Array Object (VAO) states to the GPU how we store our vertex data
 	//Vertex Buffer Object (VBO) is an object buffer that provides the methods to push data to the GPU
