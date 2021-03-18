@@ -28,6 +28,7 @@ private:
 	void GenerateBuffers(); //sets up VAO and VBO
 	GLuint VAO, VBO; 
 	std::vector<Vertex> vertexList;
+	//std::vector<LightSource> lightSource;
 	GLuint shaderProgram;
 	GLuint textureID;
 	GLuint viewPos, lightPos;

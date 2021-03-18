@@ -19,27 +19,27 @@ LightSource::~LightSource()
 {
 }
 
-glm::vec3 LightSource::GetPosition()
+glm::vec3 LightSource::GetPosition() const
 {
     return lightPos;
 }
 
-float LightSource::GetAmbValue()
+float LightSource::GetAmbValue() const
 {
     return ambValue;
 }
 
-float LightSource::GetDiffValue()
+float LightSource::GetDiffValue() const
 {
     return diffValue;
 }
 
-float LightSource::GetSpecValue()
+float LightSource::GetSpecValue() const
 {
     return specValue;
 }
 
-glm::vec3 LightSource::GetLightColour()
+glm::vec3 LightSource::GetLightColour() const
 {
     return lightColour;
 }

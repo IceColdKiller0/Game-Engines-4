@@ -11,11 +11,11 @@ public:
 	LightSource(glm::vec3 lightPos_, float ambValue_, float diffValue_, float specValue_, glm::vec3 lightColour_);
 	~LightSource();
 
-	glm::vec3 GetPosition();
-	float GetAmbValue();
-	float GetDiffValue();
-	float GetSpecValue();
-	glm::vec3 GetLightColour();
+	glm::vec3 GetPosition() const;
+	float GetAmbValue() const;
+	float GetDiffValue() const;
+	float GetSpecValue() const;
+	glm::vec3 GetLightColour() const;
 
 	void SetPosition(glm::vec3 lightPos_); //sets position
 	void SetAmbValue(float ambValue_); //sets ambvalue

@@ -6,6 +6,7 @@ Camera::Camera() : position(glm::vec3()), fieldOfView(0.0f), forward(glm::vec3()
 right(glm::vec3()), worldUp(glm::vec3()), nearPlane(0.0f), farPlane(0.0f), yaw(0.0f), pitch(0.0f), perspective(glm::mat4()),
 orthographic(glm::mat4()), view(glm::mat4())
 {
+    lightSource = std::vector<LightSource*>();
     fieldOfView = 45.0f;
     forward = glm::vec3(0.0f, 0.0f, -1.0f);
     up = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -48,7 +49,7 @@ void Camera::AddLightSource(LightSource* lightSource_)
 
 std::vector<LightSource*> Camera::GetLightSource()
 {
-    return lightSource;
+    return lightSource;            
 }
 
 glm::mat4 Camera::GetView() const

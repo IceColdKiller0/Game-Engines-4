@@ -23,7 +23,7 @@ public:
 	glm::mat4 GetOthographic() const;
 	glm::vec3 GetPosition() const;
 
-	std::vector<LightSource*> lightSource;
+	//LightSource* lightSource1;
 
 private:
 	void UpdateCameraVectors();
@@ -34,7 +34,7 @@ private:
 	float nearPlane, farPlane;
 	glm::vec3 forward, up, right, worldUp;
 
-	
+	std::vector<LightSource*> lightSource;
 };
 
 #endif;

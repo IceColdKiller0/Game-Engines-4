@@ -27,14 +27,15 @@ void Mesh::Render(Camera* camera_, glm::mat4 transform_)
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
+	glUniformMatrix3fv(viewPos, 1, GL_FALSE, glm::value_ptr(camera_->GetPosition()));
+	glUniform3fv(lightPos, 1, glm::value_ptr(camera_->GetLightSource()[0]->GetPosition()));
+	glUniform1f(ambValue, camera_->GetLightSource()[0]->GetAmbValue());
+	glUniform1f(diffValue, camera_->GetLightSource()[0]->GetDiffValue());
+	glUniform1f(specValue, camera_->GetLightSource()[0]->GetSpecValue());
+	glUniform3fv(lightColour, 1, glm::value_ptr(camera_->GetLightSource()[0]->GetLightColour()));
+
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetPerspective()));
-
-	glUniformMatrix3fv(viewPos, 1, GL_FALSE, glm::value_ptr(camera_->GetPosition()));
-	//glUniform3fv(lightPos, 1, );
-	//glUniform1f(ambValue, );
-	
-
 	
 
 	glBindVertexArray(VAO); //BIND VAO
