@@ -23,11 +23,10 @@ bool GameScene::OnCreate()
 	MainEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 4.0f));
 	MainEngine::GetInstance()->GetCamera()->AddLightSource(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), 0.1f, 0.5f, 0.5f,
 		glm::vec3(1.0f, 1.0f, 1.0f)));
-	TextureHandler::GetInstance()->CreateTexture("CheckerboardTexture","./Resources/Textures/CheckerboardTexture.png");
 
-	Vertex v;
-	std::vector<Vertex> vertexList;
-	vertexList.reserve(36);
+	//Vertex v;
+	//std::vector<Vertex> vertexList;
+	//vertexList.reserve(36);
 	{//v.position = glm::vec3(-0.5f, 0.5f, 0.0f); //top left
 	//v.colour = glm::vec3(1.0f, 0.0f, 0.0f);
 	//vertexList.push_back(v);
@@ -53,7 +52,7 @@ bool GameScene::OnCreate()
 	}
 	
 	{
-		v.position = glm::vec3(-0.5f, -0.5f, -0.5f);
+		/*v.position = glm::vec3(-0.5f, -0.5f, -0.5f);
 		v.normal = glm::vec3(0.0f, 0.0f, -1.0f);
 		v.textureCoordinates = glm::vec2(0.0f, 0.0f);
 		v.colour = glm::vec3(0.583f, 0.771f, 0.014f);
@@ -267,14 +266,18 @@ bool GameScene::OnCreate()
 		v.normal = glm::vec3(0.0f, 1.0f, 0.0f);
 		v.textureCoordinates = glm::vec2(0.0f, 0.0f);
 		v.colour = glm::vec3(0.982f, 0.099f, 0.879f);
-		vertexList.push_back(v);
+		vertexList.push_back(v);*/
 	}
 
-	model = new Model(ShaderHandler::GetInstance()->GetShader("basicShader"));
-	model->AddMesh(new Mesh(vertexList, TextureHandler::GetInstance()->GetTexture("CheckerboardTexture"),
-		ShaderHandler::GetInstance()->GetShader("basicShader")));
+	//model = new Model("", "", ShaderHandler::GetInstance()->GetShader("basicShader"));
+	//SubMesh subMesh;
+	//subMesh.vertexList = vertexList;
+	//subMesh.textureID = TextureHandler::GetInstance()->GetTexture("CheckerboardTexture");
+	//model->AddMesh(new Mesh(subMesh, ShaderHandler::GetInstance()->GetShader("basicShader")));
 	//model->AddMesh(new Mesh(vertexList2, ShaderHandler::GetInstance()->GetShader("colourShader")));
-	model->SetScale(glm::vec3(0.7f));
+	model = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl",
+		ShaderHandler::GetInstance()->GetShader("basicShader"));
+	//model->SetScale(glm::vec3(0.7f));
 	shape = new GameObject(model);
 	
 	return true;
@@ -283,7 +286,8 @@ bool GameScene::OnCreate()
 void GameScene::Update(const float deltaTime_)
 {
 	//std::cout << deltaTime_ << std::endl;
-	model->SetAngle(model->GetAngle() + 0.005f);
+	//model->SetAngle(model->GetAngle() + 0.005f);
+	shape->Update(deltaTime_);
 }
 
 void GameScene::Render()

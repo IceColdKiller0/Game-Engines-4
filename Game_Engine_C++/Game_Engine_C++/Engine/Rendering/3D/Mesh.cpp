@@ -1,15 +1,26 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex>& vertexList_, GLuint textureID_, GLuint shaderProgram_)
+Mesh::Mesh(SubMesh& subMesh_, GLuint shaderProgram_)
 {
 	VAO = 0;
 	VBO = 0;
-	vertexList = std::vector<Vertex>(); //sets vertex list to equal an empty vector
-	textureID = 0;
+	//vertexList = std::vector<Vertex>(); //sets vertex list to equal an empty vector
+	//textureID = 0;
 	shaderProgram = 0;
-	vertexList = vertexList_; //sets the class vertex list vector equal to the vertex list passed in as a param 
-	textureID = textureID_;
+	modelLoc = 0;
+	viewLoc = 0;
+	projectionLoc = 0;
+	textureLoc = 0;
+	viewPos = 0;
+	lightPos = 0;
+	ambValue = 0;
+	diffValue = 0;
+	specValue = 0;
+	lightColour = 0;
+	//vertexList = vertexList_; //sets the class vertex list vector equal to the vertex list passed in as a param 
+	//textureID = textureID_;
 	shaderProgram = shaderProgram_;
+	subMesh = subMesh_;
 	GenerateBuffers();
 }
 
@@ -18,16 +29,26 @@ Mesh::~Mesh()
 	glDeleteVertexArrays(1, &VAO); //Deletes VAO - opengl has its own way of deleting
 	glDeleteBuffers(1, &VBO); //Deletes VBO
 
-	vertexList.clear();
+	//vertexList.clear();
+	
+	if (subMesh.vertexList.size() > 0)
+	{
+		subMesh.vertexList.clear();
+	}
+
+	if (subMesh.meshIndices.size() > 0)
+	{
+		subMesh.meshIndices.clear();
+	}
 }
 
-void Mesh::Render(Camera* camera_, glm::mat4 transform_)
+void Mesh::Render(Camera* camera_, std::vector<glm::mat4>& instances_)
 {
 	glUniform1i(textureLoc, 0);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, textureID);
+	glBindTexture(GL_TEXTURE_2D, subMesh.textureID);
 
-	glUniformMatrix3fv(viewPos, 1, GL_FALSE, glm::value_ptr(camera_->GetPosition()));
+	glUniform3fv(viewPos, 1, glm::value_ptr(camera_->GetPosition()));
 	glUniform3fv(lightPos, 1, glm::value_ptr(camera_->GetLightSource()[0]->GetPosition()));
 	glUniform1f(ambValue, camera_->GetLightSource()[0]->GetAmbValue());
 	glUniform1f(diffValue, camera_->GetLightSource()[0]->GetDiffValue());
@@ -42,11 +63,15 @@ void Mesh::Render(Camera* camera_, glm::mat4 transform_)
 
 	glEnable(GL_DEPTH_TEST); // when objects are rendered their z values will be taken into consideration
 
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(transform_));
+	for (int i = 0; i < instances_.size(); i++)
+	{
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(instances_[i]));
 
-	glDrawArrays(GL_TRIANGLES, 0, vertexList.size()); //draw
+		glDrawArrays(GL_TRIANGLES, 0, subMesh.vertexList.size()); //draw
+	}
 
 	glBindVertexArray(0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Mesh::GenerateBuffers()
@@ -55,7 +80,7 @@ void Mesh::GenerateBuffers()
 	glGenBuffers(1, &VBO); //Generate VBO
 	glBindVertexArray(VAO); //Bind to the GPU as an array
 	glBindBuffer(GL_ARRAY_BUFFER, VBO); //Bind to the GPU 
-	glBufferData(GL_ARRAY_BUFFER, vertexList.size() * sizeof(Vertex), &vertexList[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, subMesh.vertexList.size() * sizeof(Vertex), &subMesh.vertexList[0], GL_STATIC_DRAW);
 
 	//POSITION
 	glEnableVertexAttribArray(0);

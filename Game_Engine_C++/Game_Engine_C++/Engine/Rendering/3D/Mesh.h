@@ -16,21 +16,26 @@ struct Vertex //non-interleaved
 	glm::vec3 colour; // can be a vec4 which inlcudes alpha
 };
 
+struct SubMesh
+{
+	std::vector<Vertex> vertexList;
+	std::vector<unsigned int> meshIndices;
+	GLuint textureID;
+};
+
 class Mesh
 {
 public:
-	Mesh(std::vector<Vertex>& vertexList_, GLuint textureID_, GLuint shaderProgram_); // takes in a vector of type vertex objects // pass in the vector by reference (&) than the value, saves computation time
+	Mesh(SubMesh& subMesh_, GLuint shaderProgram_); // takes in a vector of type vertex objects // pass in the vector by reference (&) than the value, saves computation time
 	~Mesh();
 
-	void Render(Camera* camera_, glm::mat4 transform_);
+	void Render(Camera* camera_, std::vector<glm::mat4>& instances_);
 
 private:
 	void GenerateBuffers(); //sets up VAO and VBO
-	GLuint VAO, VBO; 
-	std::vector<Vertex> vertexList;
-	//std::vector<LightSource> lightSource;
+	GLuint VAO, VBO;
+	SubMesh subMesh;
 	GLuint shaderProgram;
-	GLuint textureID;
 	GLuint viewPos, lightPos;
 	GLuint ambValue, diffValue, specValue, lightColour;
 	GLuint modelLoc, viewLoc, projectionLoc, textureLoc; //uniform location variable

@@ -18,7 +18,8 @@ void main()
 {
 	gl_Position = projection * view * model * vec4(position, 1.0f);
 	Colour = colour;
-	TexCoords = texCoords;
+	//TexCoords = texCoords;
+	TexCoords = vec2(texCoords.x, 1.0 - texCoords.y);
 	//Normal = normal;
 
 	Normal = mat3(transpose(inverse(model))) * normal;
