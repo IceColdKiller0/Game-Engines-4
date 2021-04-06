@@ -17,6 +17,7 @@ public:
 	unsigned int CreateInstance(glm::vec3 position_, float angle_, glm::vec3 rotation_, glm::vec3 scale_);
 	void UpdateInstance(unsigned int index_, glm::vec3 position_, float angle_, glm::vec3 rotation_, glm::vec3 scale_);
 	glm::mat4 GetTransform(unsigned int index_) const;
+	GLuint GetShaderProgram() const;
 
 	//glm::vec3 GetPosition() const; //gets position
 	//float GetAngle() const; //gets angle

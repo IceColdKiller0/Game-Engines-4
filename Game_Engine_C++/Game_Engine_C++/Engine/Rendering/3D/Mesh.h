@@ -7,6 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "../../Camera/Camera.h"
+#include "../../Graphics/MaterialHandler.h"
 
 struct Vertex //non-interleaved
 {
@@ -20,7 +21,7 @@ struct SubMesh
 {
 	std::vector<Vertex> vertexList;
 	std::vector<unsigned int> meshIndices;
-	GLuint textureID;
+	Material material;
 };
 
 class Mesh
@@ -39,6 +40,7 @@ private:
 	GLuint viewPos, lightPos;
 	GLuint ambValue, diffValue, specValue, lightColour;
 	GLuint modelLoc, viewLoc, projectionLoc, textureLoc; //uniform location variable
+	GLuint diffuseMapLoc, shininessLoc, transparencyLoc, ambientLoc, diffuseLoc, specularLoc;
 
 	//Vertex Array Object (VAO) states to the GPU how we store our vertex data
 	//Vertex Buffer Object (VBO) is an object buffer that provides the methods to push data to the GPU
