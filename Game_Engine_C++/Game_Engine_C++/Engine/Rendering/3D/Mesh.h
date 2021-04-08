@@ -39,7 +39,7 @@ private:
 	GLuint shaderProgram;
 	GLuint viewPos, lightPos;
 	GLuint ambValue, diffValue, specValue, lightColour;
-	GLuint modelLoc, viewLoc, projectionLoc, textureLoc; //uniform location variable
+	GLuint modelLoc, viewLoc, projectionLoc; //textureLoc; //uniform location variable
 	GLuint diffuseMapLoc, shininessLoc, transparencyLoc, ambientLoc, diffuseLoc, specularLoc;
 
 	//Vertex Array Object (VAO) states to the GPU how we store our vertex data

@@ -10,7 +10,14 @@ Mesh::Mesh(SubMesh& subMesh_, GLuint shaderProgram_)
 	modelLoc = 0;
 	viewLoc = 0;
 	projectionLoc = 0;
-	textureLoc = 0;
+	//textureLoc = 0;
+	diffuseMapLoc = 0;
+	ambientLoc = 0;
+	diffuseLoc = 0;
+	specularLoc = 0;
+	shininessLoc = 0;
+	transparencyLoc = 0;
+	diffuseLoc = 0;
 	viewPos = 0;
 	lightPos = 0;
 	ambValue = 0;
@@ -44,7 +51,7 @@ Mesh::~Mesh()
 
 void Mesh::Render(Camera* camera_, std::vector<glm::mat4>& instances_)
 {
-	glUniform1i(textureLoc, 0);
+	glUniform1i(diffuseMapLoc, 0);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, subMesh.material.diffuseMap);
 
@@ -54,6 +61,12 @@ void Mesh::Render(Camera* camera_, std::vector<glm::mat4>& instances_)
 	glUniform1f(diffValue, camera_->GetLightSource()[0]->GetDiffValue());
 	glUniform1f(specValue, camera_->GetLightSource()[0]->GetSpecValue());
 	glUniform3fv(lightColour, 1, glm::value_ptr(camera_->GetLightSource()[0]->GetLightColour()));
+
+	glUniform1f(shininessLoc, subMesh.material.shininess);
+	glUniform1f(transparencyLoc, subMesh.material.transparency);
+	glUniform3f(ambientLoc, subMesh.material.ambient.x, subMesh.material.ambient.y, subMesh.material.ambient.z);
+	glUniform3f(diffuseLoc, subMesh.material.diffuse.x, subMesh.material.diffuse.y, subMesh.material.diffuse.z);
+	glUniform3f(specularLoc, subMesh.material.specular.x, subMesh.material.specular.y, subMesh.material.specular.z);
 
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetPerspective()));
@@ -104,7 +117,7 @@ void Mesh::GenerateBuffers()
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
 	viewLoc = glGetUniformLocation(shaderProgram, "view");
 	projectionLoc = glGetUniformLocation(shaderProgram, "projection");
-	textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
+	//textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
 
 	viewPos = glGetUniformLocation(shaderProgram, "viewPos");
 	lightPos = glGetUniformLocation(shaderProgram, "light.lightPos");

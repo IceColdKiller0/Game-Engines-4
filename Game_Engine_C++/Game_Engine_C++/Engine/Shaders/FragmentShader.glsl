@@ -1,10 +1,5 @@
 #version 450 core
 
-in vec3 FragPos;
-in vec3 Normal;
-in vec2 TexCoords;
-//in vec3 Colour;
-
 struct Light
 {
 	vec3 lightPos;
@@ -25,6 +20,11 @@ struct Material
 	vec3 diffuse; //Kd
 	vec3 specular; //Ks
 };
+
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+//in vec3 Colour;
 
 //uniform sampler2D inputTexture;
 uniform Light light;
@@ -52,6 +52,7 @@ void main()
 	
 	vec3 result = ambient + diffuse + specular;
 	fColour = vec4(result, material.transparency);
+
 	
 	//fColour = texture(inputTexture, TexCoords);
 }
