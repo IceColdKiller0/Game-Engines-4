@@ -6,8 +6,7 @@
 class GameObject
 {
 public:
-	GameObject(Model* model_);
-	GameObject(Model* model_, glm::vec3 position_);
+	GameObject(Model* model_, glm::vec3 position_ = glm::vec3());
 	~GameObject();
 
 	void Update(const float deltaTime_);
@@ -18,6 +17,7 @@ public:
 	glm::vec3 GetRotation() const; //gets rotation
 	glm::vec3 GetScale() const; //gets scale
 	std::string GetTag() const; //gets tag
+	BoundingBox GetBoundingBox() const;
 
 	void SetPosition(glm::vec3 position_); //sets position
 	void SetAngle(float angle_); //sets angle
@@ -33,6 +33,8 @@ private:
 	glm::vec3 rotation;
 	glm::vec3 scale;
 	std::string tag; 
+
+	BoundingBox boundingBox;
 };
 
 #endif;

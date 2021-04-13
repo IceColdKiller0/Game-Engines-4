@@ -43,6 +43,10 @@ bool MainEngine::OnCreate(std::string name_, int width_, int height_)
 		return isRunning = false; // sets the isRunning variable to false then return the variable
 	}
 
+	SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
+
+	MouseEventListener::RegisterEngineObject(this);
+
 	ShaderHandler::GetInstance()->CreateProgram("colourShader",
 		"Engine/Shaders/ColourVertexShader.glsl", "Engine/Shaders/ColourFragmentShader.glsl");
 
@@ -70,6 +74,7 @@ void MainEngine::Run() // Entire Game loop of the engine, continously calling up
 	while (isRunning)
 	{
 		timer.UpdateFrameTicks();
+		EventListener::Update();
 		Update(timer.GetDeltaTime());
 		Render();
 		SDL_Delay(timer.GetSleepTime(fps));
@@ -123,6 +128,30 @@ void MainEngine::SetCurrentScene(int sceneNum_)
 void MainEngine::SetCamera(Camera* camera_)
 {
 	camera = camera_;
+}
+
+void MainEngine::NotifyOfMousePressed(glm::ivec2 mouse_, int buttonType_)
+{
+}
+
+void MainEngine::NotifyOfMouseReleased(glm::ivec2 mouse_, int buttonType_)
+{
+}
+
+void MainEngine::NotifyOfMouseMove(glm::ivec2 mouse_)
+{
+	if (camera)
+	{
+		camera->ProcessMouseMovement(MouseEventListener::GetMouseOffset());
+	}
+}
+
+void MainEngine::NotifyOfMouseScroll(int y_)
+{
+	if (camera)
+	{
+		camera->ProcessMouseZoom(y_);
+	}
 }
 
 void MainEngine::Update(const float deltaTime_)

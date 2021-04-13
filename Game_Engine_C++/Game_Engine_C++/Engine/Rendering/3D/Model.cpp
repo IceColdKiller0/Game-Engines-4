@@ -86,8 +86,16 @@ void Model::LoadModel()
 	{
 		meshes.push_back(new Mesh(obj->GetSubMeshes()[i], shaderProgram));
 	}
+
+	boundingBox = obj->GetBoundingBox();
+
 	delete obj;
 	obj = nullptr;
+}
+
+BoundingBox Model::GetBoundingBox() const
+{
+	return boundingBox;
 }
 
 //contains all model transformation

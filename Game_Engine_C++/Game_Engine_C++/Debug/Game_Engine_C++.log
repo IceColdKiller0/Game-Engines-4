@@ -1,2 +1,3 @@
-﻿  MaterialLoader.cpp
+﻿  LoadOBJModel.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Rendering\3D\LoadOBJModel.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
   Game_Engine_C++.vcxproj -> C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Debug\Game_Engine_C++.exe

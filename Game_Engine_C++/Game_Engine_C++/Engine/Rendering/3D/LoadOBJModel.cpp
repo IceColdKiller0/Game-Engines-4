@@ -45,6 +45,11 @@ std::vector<SubMesh> LoadOBJModel::GetSubMeshes()
 	return subMeshes;
 }
 
+BoundingBox LoadOBJModel::GetBoundingBox() const
+{
+	return boundingBox;
+}
+
 void LoadOBJModel::PostProcessing()
 {
 	for (unsigned int i = 0; i < indices.size(); i++)
@@ -90,6 +95,25 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 			float x, y, z;
 			v >> x >> y >> z;
 			vertices.push_back(glm::vec3(x, y, z));
+
+			for (int i = 1; i < vertices.size(); i++)
+			{
+				//min vertices
+				if (vertices[i].x < boundingBox.minVert.x)
+					boundingBox.minVert.x = vertices[i].x;
+				if (vertices[i].y < boundingBox.minVert.y)
+					boundingBox.minVert.y = vertices[i].y;
+				if (vertices[i].z < boundingBox.minVert.z)
+					boundingBox.minVert.z = vertices[i].z;
+
+				//max vertices
+				if (vertices[i].x > boundingBox.maxVert.x)
+					boundingBox.maxVert.x = vertices[i].x;
+				if (vertices[i].y > boundingBox.maxVert.y)
+					boundingBox.maxVert.y = vertices[i].y;
+				if (vertices[i].z > boundingBox.maxVert.z)
+					boundingBox.maxVert.z = vertices[i].z;
+			}
 		}
 		//VERTEX TEXTURE
 		else if (line.substr(0, 3) == "vt ")
