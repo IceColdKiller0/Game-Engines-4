@@ -24,6 +24,8 @@ bool GameScene::OnCreate()
 	MainEngine::GetInstance()->GetCamera()->AddLightSource(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), 0.1f, 0.5f, 0.5f,
 		glm::vec3(1.0f, 1.0f, 1.0f)));
 
+	CollisionHandler::GetInstance()->OnCreate();
+
 	Model* diceModel = new Model("Resources/Models/Dice.obj", "Resources/Materials/Dice.mtl",
 		ShaderHandler::GetInstance()->GetShader("basicShader"));
 

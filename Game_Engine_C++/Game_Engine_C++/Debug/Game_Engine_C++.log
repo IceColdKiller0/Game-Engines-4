@@ -1,3 +1,34 @@
-﻿  LoadOBJModel.cpp
+﻿  CollisionHandler.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Math\CollisionHandler.cpp(52): error C2102: '&' requires l-value
+  CollisionDetection.cpp
+  BoundingBox.cpp
+  Camera.cpp
+  Debugger.cpp
+  GameInterface.cpp
+  GameObject.cpp
+  EventListener.cpp
+  GameScene.cpp
+  Game_1.cpp
+  LightSource.cpp
+  LoadOBJModel.cpp
 C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Rendering\3D\LoadOBJModel.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
-  Game_Engine_C++.vcxproj -> C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Debug\Game_Engine_C++.exe
+  Main.cpp
+  MainEngine.cpp
+  Window.cpp
+  Timer.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Core\Timer.cpp(41,32): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+  Scene.cpp
+  StartScene.cpp
+  Mesh.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Rendering\3D\Mesh.cpp(79,20): warning C4018: '<': signed/unsigned mismatch
+  Model.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Rendering\3D\Model.cpp(85,20): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  ShaderHandler.cpp
+  TextureHandler.cpp
+  SceneGraph.cpp
+  MaterialHandler.cpp
+  MaterialLoader.cpp
+  MouseEventListener.cpp
+  Generating Code...

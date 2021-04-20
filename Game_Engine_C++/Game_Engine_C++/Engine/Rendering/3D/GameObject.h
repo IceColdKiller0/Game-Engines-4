@@ -18,12 +18,14 @@ public:
 	glm::vec3 GetScale() const; //gets scale
 	std::string GetTag() const; //gets tag
 	BoundingBox GetBoundingBox() const;
+	bool GetHit() const;
 
 	void SetPosition(glm::vec3 position_); //sets position
 	void SetAngle(float angle_); //sets angle
 	void SetRotation(glm::vec3 rotation_); //sets rotation
 	void SetScale(glm::vec3 scale_); //sets scale
 	void SetTag(std::string tag_); //sets tag
+	void SetHit(bool hit_, int buttonType_);
 
 private:
 	Model* model;
@@ -35,6 +37,8 @@ private:
 	std::string tag; 
 
 	BoundingBox boundingBox;
+
+	bool hit;
 };
 
 #endif;

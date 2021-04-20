@@ -25,6 +25,8 @@ public:
 	glm::mat4 GetPerspective() const;
 	glm::mat4 GetOthographic() const;
 	glm::vec3 GetPosition() const;
+	float GetNearPlane() const;
+	float GetFarPlane() const;
 
 	//LightSource* lightSource1;
 

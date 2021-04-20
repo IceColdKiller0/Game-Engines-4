@@ -1,5 +1,6 @@
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\vc142.pdb
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\vc142.idb
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\texturehandler.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\shaderhandler.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\model.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\mesh.obj
@@ -15,7 +16,15 @@ c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\d
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\gameinterface.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\debugger.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\camera.obj
-c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\texturehandler.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\lightsource.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\loadobjmodel.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\scenegraph.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\materialloader.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\materialhandler.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\mouseeventlistener.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\eventlistener.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\boundingbox.obj
+c:\users\willi\documents\github\game-engines-4\game_engine_c++\game_engine_c++\debug\collisiondetection.obj
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\debug\game_engine_c++.exe
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\debug\game_engine_c++.ilk
 c:\users\willi\documents\github\game-engines-4\game_engine_c++\debug\game_engine_c++.pdb
