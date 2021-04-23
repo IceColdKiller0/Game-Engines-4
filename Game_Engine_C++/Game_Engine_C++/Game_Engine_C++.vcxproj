@@ -150,6 +150,7 @@
     <ClCompile Include="Engine\Core\GameInterface.cpp" />
     <ClCompile Include="Engine\Rendering\3D\GameObject.cpp" />
     <ClCompile Include="Engine\Events\EventListener.cpp" />
+    <ClCompile Include="Engine\Math\Frustum.cpp" />
     <ClCompile Include="Game\Scenes\GameScene.cpp" />
     <ClCompile Include="Game\Game_1.cpp" />
     <ClCompile Include="Engine\FX\LightSource.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Engine\Math\Ray.h" />
     <ClInclude Include="Engine\Rendering\3D\GameObject.h" />
     <ClInclude Include="Engine\Events\EventListener.h" />
+    <ClInclude Include="Engine\Math\Frustum.h" />
     <ClInclude Include="Game\Scenes\GameScene.h" />
     <ClInclude Include="Game\Game_1.h" />
     <ClInclude Include="Engine\Core\Scene.h" />

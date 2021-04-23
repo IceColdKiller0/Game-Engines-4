@@ -86,6 +86,9 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 
 	std::string line;
 
+	boundingBox.minVert = glm::vec3(1000000.0f);
+	boundingBox.maxVert = glm::vec3(-1000000.0f);
+
 	while (std::getline(in, line))
 	{
 		//VERTEX DATA
@@ -96,24 +99,23 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 			v >> x >> y >> z;
 			vertices.push_back(glm::vec3(x, y, z));
 
-			for (int i = 1; i < vertices.size(); i++)
-			{
+			
 				//min vertices
-				if (vertices[i].x < boundingBox.minVert.x)
-					boundingBox.minVert.x = vertices[i].x;
-				if (vertices[i].y < boundingBox.minVert.y)
-					boundingBox.minVert.y = vertices[i].y;
-				if (vertices[i].z < boundingBox.minVert.z)
-					boundingBox.minVert.z = vertices[i].z;
+				if (x < boundingBox.minVert.x)
+					boundingBox.minVert.x = x;
+				if (y < boundingBox.minVert.y)
+					boundingBox.minVert.y = y;
+				if (z < boundingBox.minVert.z)
+					boundingBox.minVert.z = z;
 
 				//max vertices
-				if (vertices[i].x > boundingBox.maxVert.x)
-					boundingBox.maxVert.x = vertices[i].x;
-				if (vertices[i].y > boundingBox.maxVert.y)
-					boundingBox.maxVert.y = vertices[i].y;
-				if (vertices[i].z > boundingBox.maxVert.z)
-					boundingBox.maxVert.z = vertices[i].z;
-			}
+				if (x > boundingBox.maxVert.x)
+					boundingBox.maxVert.x = x;
+				if (y > boundingBox.maxVert.y)
+					boundingBox.maxVert.y = y;
+				if (z > boundingBox.maxVert.z)
+					boundingBox.maxVert.z = z;
+			
 		}
 		//VERTEX TEXTURE
 		else if (line.substr(0, 3) == "vt ")

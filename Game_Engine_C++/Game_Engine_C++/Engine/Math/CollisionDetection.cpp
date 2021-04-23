@@ -83,7 +83,7 @@ bool CollisionDetection::RayObbIntersection(Ray* ray_, BoundingBox* box_)
     }
 
     //Y axis
-    glm::vec3 yAxis(modelMatrix[0].x, modelMatrix[0].y, modelMatrix[0].z);
+    glm::vec3 yAxis(modelMatrix[1].x, modelMatrix[1].y, modelMatrix[1].z);
     float dotDelta_y = glm::dot(yAxis, delta);
     float dotDir_y = glm::dot(rayDirection, yAxis);
     if (fabs(dotDir_y) > 0.001f)
@@ -122,7 +122,7 @@ bool CollisionDetection::RayObbIntersection(Ray* ray_, BoundingBox* box_)
     }
 
     //Z axis
-    glm::vec3 zAxis(modelMatrix[0].x, modelMatrix[0].y, modelMatrix[0].z);
+    glm::vec3 zAxis(modelMatrix[2].x, modelMatrix[2].y, modelMatrix[2].z);
     float dotDelta_z = glm::dot(zAxis, delta);
     float dotDir_z = glm::dot(rayDirection, zAxis);
     if (fabs(dotDir_z) > 0.001f)
