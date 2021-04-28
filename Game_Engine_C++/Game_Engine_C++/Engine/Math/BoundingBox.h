@@ -30,8 +30,10 @@ struct BoundingBox
 		glm::vec3 otherMinCorner = GetTransformedPoint(box_->minVert, box_->transform);
 		glm::vec3 otherMaxCorner = GetTransformedPoint(box_->maxVert, box_->transform);
 
-		if (minCorner.x + maxCorner.x >= otherMinCorner.x && otherMinCorner.x + otherMaxCorner.x >= minCorner.x &&
-			minCorner.y + maxCorner.y >= otherMinCorner.y && otherMinCorner.y + otherMaxCorner.y >= minCorner.y)
+	
+		if (minCorner.x <= otherMaxCorner.x && maxCorner.y >= otherMinCorner.x &&
+			minCorner.y <= otherMaxCorner.y && maxCorner.y >= otherMinCorner.y &&
+			minCorner.z <= otherMaxCorner.z && maxCorner.z >= otherMinCorner.z)
 		{
 			return true;
 		}

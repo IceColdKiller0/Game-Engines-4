@@ -196,14 +196,15 @@ void OctSpatialPartition::AddObjectToCell(OctNode* cell_, GameObject* obj_)
 	{
 		if (obj_->GetBoundingBox().Intersects(cell_->GetBoundingBox()))
 		{
-			AddObject(obj_);
-			cout << "Added " << obj_->GetTag() << " to cell: " << glm::to_string(root->octBounds->minVert) << endl;
+			
+			cell_->AddCollisionObject(obj_);
+			cout << "Added " << obj_->GetTag() << " to cell: " << glm::to_string(/*root->octBounds->minVert*/ cell_->octBounds->minVert) << endl;
 		}
 	}
 
 	else if (!cell_->IsLeaf())
 	{
-		for (int i = 0; i < cell_->GetChildCount(); i++)
+		for (int i = 0; i < CHILDREN_NUMBER; i++)
 		{
 			AddObjectToCell(cell_->children[i], obj_);
 		}
@@ -222,7 +223,7 @@ void OctSpatialPartition::PrepareCollisionQuery(OctNode* cel_, Ray ray_)
 
 	else if (!cel_->IsLeaf())
 	{
-		for (int i = 0; i < cel_->GetChildCount(); i++)
+		for (int i = 0; i < CHILDREN_NUMBER; i++)
 		{
 			PrepareCollisionQuery(cel_->children[i], ray_);
 		}

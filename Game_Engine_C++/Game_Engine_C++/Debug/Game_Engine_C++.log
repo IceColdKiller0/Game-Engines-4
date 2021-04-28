@@ -1,2 +1,19 @@
-﻿  OctSpatialPartition.cpp
+﻿  Camera.cpp
+  MainEngine.cpp
+  OctSpatialPartition.cpp
+  EventListener.cpp
+  MouseEventListener.cpp
+  BoundingBox.cpp
+  CollisionDetection.cpp
+  CollisionHandler.cpp
+  GameObject.cpp
+  LoadOBJModel.cpp
+  Model.cpp
+C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Game_Engine_C++\Engine\Rendering\3D\Model.cpp(85,20): warning C4018: '<': signed/unsigned mismatch
+  SceneGraph.cpp
+  Game_1.cpp
+  GameScene.cpp
+  StartScene.cpp
+  Main.cpp
+  Generating Code...
   Game_Engine_C++.vcxproj -> C:\Users\willi\Documents\GitHub\Game-Engines-4\Game_Engine_C++\Debug\Game_Engine_C++.exe
